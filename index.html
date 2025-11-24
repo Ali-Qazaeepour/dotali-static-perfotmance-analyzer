@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DotAli Static Performance Analyzer – v2.5</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+
+<header class="da-header">
+  <div class="da-header-top">
+    <div>
+      <h1>DotAli Static Performance Analyzer – v2.5</h1>
+      <p>Paste or drop HTML/CSS → get score, highlights, and Core Web Vitals hints.</p>
+    </div>
+    <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
+  </div>
+</header>
+
+<main class="da-main">
+  <section class="da-panel">
+    <h2>Input</h2>
+
+    <div id="dropZone" class="drop-zone">
+      Drag & drop <strong>.html</strong> / <strong>.css</strong> files here<br>
+      or paste manually below.
+    </div>
+
+    <label for="htmlInput">HTML snippet</label>
+    <textarea id="htmlInput" placeholder="Paste your HTML..."></textarea>
+
+    <label for="cssInput">CSS snippet</label>
+    <textarea id="cssInput" placeholder="Paste your CSS..."></textarea>
+
+    <button id="analyzeBtn">Analyze</button>
+  </section>
+
+  <section class="da-panel da-results">
+    <h2>Results</h2>
+
+    <div id="scoreBox" class="score-box">Score: --</div>
+    <div id="summary"></div>
+
+    <div class="meta-badges">
+      <span id="clsBadge" class="meta-chip">CLS: --</span>
+      <span id="lcpBadge" class="meta-chip">LCP: --</span>
+      <span id="cssBadge" class="meta-chip">CSS weight: --</span>
+    </div>
+
+    <ul id="resultsList"></ul>
+
+    <button id="downloadBtn" class="download-btn" disabled>Download JSON report</button>
+
+    <h3 class="guide-title">Core Web Vitals – Quick Guide</h3>
+    <ul class="guide">
+      <li><strong>LCP</strong>: preload main CSS / hero image, avoid huge above-the-fold images.</li>
+      <li><strong>CLS</strong>: always set <code>width</code>/<code>height</code> on images & media.</li>
+      <li><strong>CSS weight</strong>: remove unused rules, keep critical CSS small.</li>
+      <li>Avoid too many external CSS files and heavy inline styles.</li>
+      <li>Use <code>loading="lazy"</code> for non-hero images.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="da-footer">
+  <small>DotAli – Performance-First Static Tools</small>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
