@@ -12,7 +12,7 @@
   <div class="da-header-top">
     <div>
       <h1>DotAli Static Performance Analyzer – v2.5</h1>
-      <p>Paste or drop HTML/CSS → get score, highlights, and Core Web Vitals hints.</p>
+      <p>Paste or drop HTML/CSS → get a heuristic score, highlights, and performance hints.</p>
     </div>
     <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
   </div>
@@ -39,12 +39,12 @@
   <section class="da-panel da-results">
     <h2>Results</h2>
 
-    <div id="scoreBox" class="score-box">Score: --</div>
+    <div id="scoreBox" class="score-box">Heuristic score: --</div>
     <div id="summary"></div>
 
     <div class="meta-badges">
-      <span id="clsBadge" class="meta-chip">CLS: --</span>
-      <span id="lcpBadge" class="meta-chip">LCP: --</span>
+      <span id="clsBadge" class="meta-chip">CLS hints: --</span>
+      <span id="lcpBadge" class="meta-chip">LCP hints: --</span>
       <span id="cssBadge" class="meta-chip">CSS weight: --</span>
     </div>
 
@@ -54,11 +54,13 @@
 
     <h3 class="guide-title">Core Web Vitals – Quick Guide</h3>
     <ul class="guide">
-      <li><strong>LCP</strong>: preload main CSS / hero image, avoid huge above-the-fold images.</li>
-      <li><strong>CLS</strong>: always set <code>width</code>/<code>height</code> on images & media.</li>
+      <li><strong>LCP</strong>: keep initially visible and hero images eager; optimize their size and format.</li>
+      <li><strong>CLS</strong>: reserve space with correct image <code>width</code>/<code>height</code> or CSS <code>aspect-ratio</code>.</li>
       <li><strong>CSS weight</strong>: remove unused rules, keep critical CSS small.</li>
-      <li>Avoid too many external CSS files and heavy inline styles.</li>
-      <li>Use <code>loading="lazy"</code> for non-hero images.</li>
+      <li>Review stylesheet requests and duplicated styles; combining files is not always faster.</li>
+      <li>Use <code>loading="lazy"</code> only for images outside the initial viewport.</li>
+      <li>Preload critical, late-discovered assets only when measurements justify it.</li>
+      <li>This tool does not measure Core Web Vitals. Verify changes on the rendered page.</li>
     </ul>
   </section>
 </main>
